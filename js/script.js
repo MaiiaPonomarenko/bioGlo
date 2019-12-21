@@ -1,26 +1,31 @@
 'use strict';
 
+/***** popup *****/
+const popup = (btn, popupWindow) => {
+  btn.forEach((elem) => {
+    elem.addEventListener('click', () => {
+      popupWindow.style.display = 'block';
+    })
+  });
+  
+  popupWindow.addEventListener('click', (event) => {
+    let target = event.target;
+    if (target.classList.contains('popup-close'))
+      popupWindow.style.display = 'none';
+    else{
+      target = target.closest('.popup-content');
+      if (!target)
+        popupWindow.style.display = 'none';
+    }
+  });
+};
+
 /***** popup popup-call *****/
 const getPopupCall = () => {
   const callBtn = document.querySelectorAll('.call-btn'),
         popupCall = document.querySelector('.popup-call');
   
-  callBtn.forEach((elem) => {
-    elem.addEventListener('click', () => {
-      popupCall.style.display = 'block';
-    })
-  });
-
-  popupCall.addEventListener('click', (event) => {
-    let target = event.target;
-    if (target.classList.contains('popup-close'))
-      popupCall.style.display = 'none';
-    else{
-      target = target.closest('.popup-content');
-      if (!target)
-        popupCall.style.display = 'none';
-    }
-  });
+  popup(callBtn, popupCall);
 };
 getPopupCall();
 
@@ -29,24 +34,20 @@ const getPopupDiscount = () => {
   const discountBtn = document.querySelectorAll('.discount-btn'),
         popupDiscount = document.querySelector('.popup-discount');
   
-  discountBtn.forEach((elem) => {
-    elem.addEventListener('click', () => {
-      popupDiscount.style.display = 'block';
-    })
-  });
-  
-  popupDiscount.addEventListener('click', (event) => {
-    let target = event.target;
-    if (target.classList.contains('popup-close'))
-      popupDiscount.style.display = 'none';
-    else{
-      target = target.closest('.popup-content');
-      if (!target)
-        popupDiscount.style.display = 'none';
-    }
-  });
+  popup(discountBtn, popupDiscount);
 };
 getPopupDiscount();
+
+/***** popup popup-check *****/
+const getPopupCheck = () => {
+  const checkBtn = document.querySelectorAll('.check-btn'),
+        popupCheck = document.querySelector('.popup-check');
+  
+  popup(checkBtn, popupCheck);
+  
+};
+getPopupCheck();
+
 
 /***** accordion *****/
 const accordion = () => {
