@@ -3,24 +3,23 @@
 /***** popup *****/
 const getPopup = () => {
   const callBtn = document.querySelectorAll('.call-btn'),
-        popupCall = document.querySelector('.popup-call'),
-        popupClose = document.querySelector('.popup-close');
+        popupCall = document.querySelector('.popup-call');
   
   callBtn.forEach((elem) => {
     elem.addEventListener('click', () => {
       popupCall.style.display = 'block';
     })
   });
-  popupClose.addEventListener('click', (event) => {
+  
+  popupCall.addEventListener('click', (event) => {
     let target = event.target;
     if (target.classList.contains('popup-close'))
       popupCall.style.display = 'none';
     else{
-      target = target.closest('.popup-dialog');
+      target = target.closest('.popup-content');
       if (!target)
         popupCall.style.display = 'none';
     }
-    
-  })
+  });
 };
 getPopup();
