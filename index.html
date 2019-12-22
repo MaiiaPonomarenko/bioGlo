@@ -130,11 +130,11 @@
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
                     <div class="panel panel-default panel-one wow fadeInLeft">
-                        <div class="panel-heading" role="tab" id="headingOne">
+                        <div class="panel-heading headingOne" role="tab" id="headingOne">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                <a class="headingOne" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
                                    aria-expanded="true" aria-controls="collapseOne">
-                                    <span class="link-text">1. Тип септика</span>
+                                    <span class="link-text headingOne">1. Тип септика</span>
                                 </a>
                             </h4>
                         </div>
@@ -159,11 +159,11 @@
                     </div>
 
                     <div class="panel panel-default panel-two wow fadeInRight" data-wow-delay="0.1s">
-                        <div class="panel-heading" role="tab" id="headingTwo">
+                        <div class="panel-heading headingTwo" role="tab" id="headingTwo">
                             <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                <a class="collapsed headingTwo" role="button" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <span class="link-text">2. Диаметр и количество колец</span>
+                                    <span class="link-text headingTwo">2. Диаметр и количество колец</span>
                                 </a>
                             </h4>
                         </div>
@@ -174,36 +174,39 @@
                                 <div class="title-text">первый колодец (приемный)</div>
                                 <div class="select-box">
                                     <p><strong>Диаметр</strong></p>
-                                    <select class="form-control expand">
+                                    <select class="form-control expand diameter-one">
                                         <option>1.4 метра</option>
                                         <option>2 метра</option>
                                     </select>
                                 </div>
                                 <div class="select-box">
                                     <p><strong>Количество колец</strong></p>
-                                    <select class="form-control expand">
+                                    <select class="form-control expand number-of-rings-one">
                                         <option>1 штука</option>
                                         <option>2 штуки</option>
                                         <option>3 штуки</option>
                                     </select>
                                 </div>
 
-                                <div class="title-text">второй колодец (дренажный)</div>
-                                <div class="select-box">
-                                    <p><strong>Диаметр</strong></p>
-                                    <select class="form-control expand">
-                                        <option>1.4 метра</option>
-                                        <option>2 метра</option>
-                                    </select>
+                                <div class="second-well">
+                                    <div class="title-text ">второй колодец (дренажный)</div>
+                                    <div class="select-box">
+                                        <p><strong>Диаметр</strong></p>
+                                        <select class="form-control expand diameter-two">
+                                            <option>1.4 метра</option>
+                                            <option>2 метра</option>
+                                        </select>
+                                    </div>
+                                    <div class="select-box">
+                                        <p><strong>Количество колец</strong></p>
+                                        <select class="form-control expand number-of-rings-two">
+                                            <option>1 штука</option>
+                                            <option>2 штуки</option>
+                                            <option>3 штуки</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="select-box">
-                                    <p><strong>Количество колец</strong></p>
-                                    <select class="form-control expand">
-                                        <option>1 штука</option>
-                                        <option>2 штуки</option>
-                                        <option>3 штуки</option>
-                                    </select>
-                                </div>
+
                                 <a class="button construct-btn" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapseThree"><span>Следующий шаг</span></a>
                             </div>
@@ -211,11 +214,11 @@
                     </div>
 
                     <div class="panel panel-default panel-three wow fadeInLeft" data-wow-delay="0.2s">
-                        <div class="panel-heading" role="tab" id="headingThree">
+                        <div class="panel-heading headingThree" role="tab" id="headingThree">
                             <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                <a class="collapsed headingThree" role="button" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    <span class="link-text">3. Наличие днища колодца</span>
+                                    <span class="link-text headingThree">3. Наличие днища колодца</span>
                                 </a>
                             </h4>
                         </div>
@@ -240,11 +243,11 @@
                     </div>
 
                     <div class="panel panel-default panel-four wow fadeInRight" data-wow-delay="0.3s">
-                        <div class="panel-heading" role="tab" id="headingFour">
+                        <div class="panel-heading headingFour" role="tab" id="headingFour">
                             <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                <a class="collapsed headingFour" role="button" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    <span class="link-text">4. Расстояние от септика до дома</span>
+                                    <span class="link-text headingFour">4. Расстояние от септика до дома</span>
                                 </a>
                             </h4>
                         </div>
@@ -253,7 +256,7 @@
                             <div class="panel-body">
                                 <p>Введите расстояние до дома</p>
                                 <input type="text">
-                                <button class="button construct-btn">Получить расчет и скидку</button>
+                                <button class="button construct-btn send-sale">Получить расчет и скидку</button>
                             </div>
                         </div>
                     </div>
@@ -365,9 +368,9 @@
         <h2>Часто задаваемые вопросы</h2>
         <div class="panel-group wow slideInDown" id="accordion-two" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne-two">
+                <div class="panel-heading collapseOne-two" role="tab" id="headingOne-two">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion-two" href="#collapseOne-two"
+                        <a class = "collapseOne-two" role="button" data-toggle="collapse" data-parent="#accordion-two" href="#collapseOne-two"
                            aria-expanded="true" aria-controls="collapseOne-two">
                             Существует ли вероятность того, что подводящий трубопровод замерзнет?
                         </a>
@@ -385,9 +388,9 @@
                 </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingTwo-two">
+                <div class="panel-heading collapseTwo-two" role="tab" id="headingTwo-two">
                     <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-two"
+                        <a class="collapsed collapseTwo-two" role="button" data-toggle="collapse" data-parent="#accordion-two"
                            href="#collapseTwo-two" aria-expanded="false" aria-controls="collapseTwo-two">
                             Помогают ли предлагаемые вами устройства достичь в загородном доме комфорта городского
                             уровня?
@@ -403,9 +406,9 @@
                 </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingThree-two">
+                <div class="panel-heading collapseThree-two" role="tab" id="headingThree-two">
                     <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-two"
+                        <a class="collapsed collapseThree-two" role="button" data-toggle="collapse" data-parent="#accordion-two"
                            href="#collapseThree-two" aria-expanded="false" aria-controls="collapseThree-two">
                             Погибают ли бактерии в холодный период при долгом простое системы?
                         </a>
