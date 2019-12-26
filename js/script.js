@@ -294,7 +294,6 @@ const calcAccordion = () => {
         }
       }
       result();
-      console.log(objCalc);
     });
     
     const result = () => {
@@ -339,8 +338,12 @@ const calcAccordion = () => {
             input.forEach((item) => {item.value = '';});
             throw new Error ('status network not 200');
           }
-          input.forEach((item) => {item.value = '';});
-          statusMessage.textContent = successMessage;
+            input.forEach((item) => {item.value = '';});
+            statusMessage.textContent = successMessage;
+            setTimeout(() => {
+              statusMessage.textContent = '';
+            }, 3000);
+          
         })
         .catch ((error) => {
           statusMessage.textContent = errorMessage;
@@ -359,6 +362,7 @@ const calcAccordion = () => {
         body: JSON.stringify(body)
       });
     };
+    
     /*********************   *********************/
   };
   calc();
@@ -384,6 +388,9 @@ const sendForm = () => {
         captureForm4 = document.getElementById('capture-form4'),
         captureFormName4 = document.getElementById('name_12'),
         captureFormPhone4 = document.getElementById('phone_12'),
+        directorForm = document.querySelector('.director-form'),
+        directorBtn = document.querySelector('.director-btn'),
+        question = document.getElementById('question'),
         input = document.querySelectorAll('input');
   
   const statusMessage = document.createElement('div');
@@ -407,6 +414,9 @@ const sendForm = () => {
       }
       input.forEach((item) => {item.value = '';});
       statusMessage.textContent = successMessage;
+      setTimeout(() => {
+        statusMessage.textContent = '';
+      }, 3000);
     })
     .catch ((error) => {
       statusMessage.textContent = errorMessage;
@@ -450,13 +460,10 @@ const sendForm = () => {
       post(captureForm4);
   });
   
-  /* подключение к calc */
-  captureForm4.addEventListener('submit', (event) => {
+  /* подключение к directorForm */
+  directorBtn.addEventListener('click', (event) => {
     event.preventDefault();
-    if (captureFormName4.classList.contains('error') || captureFormPhone4.classList.contains('error')){
-      return false;
-    } else
-      post(captureForm4);
+    post(directorForm);
   });
   
   const postData = (body) => {
