@@ -255,6 +255,87 @@ const calcAccordion = () => {
   };
   calc();
   
- 
 };
 calcAccordion();
+
+/***** ajax *****/
+const sendForm = () => {
+  
+  const errorMessage = "Ошибка отправки формы",
+        loadMessage = 'Загрузка...',
+        successMessage = 'Спасибо, мы скоро с Вами свяжемся!';
+  
+  const mainForm = document.querySelector('.main-form'),
+        mainFormPhone = document.getElementById('phone_3'),
+        captureForm = document.querySelector('.capture-form'),
+        captureFormName = document.getElementById('name_2'),
+        captureFormPhone = document.getElementById('phone_2'),
+    
+    form2 = document.getElementById('form2'),
+    form3 = document.getElementById('form3'),
+    input = document.querySelectorAll('input'),
+    name1 = document.getElementById('form1-name'),
+    phone1 = document.getElementById('form1-phone'),
+    name2 = document.getElementById('form2-name'),
+    phone2 = document.getElementById('form2-phone'),
+    message = document.getElementById('form2-message'),
+    name3 = document.getElementById('form3-name'),
+    phone3 = document.getElementById('form3-phone');
+  
+  const statusMessage = document.createElement('div');
+  statusMessage.style.cssText = `font-size: 2rem; color: #85be32;`;
+  
+  const post = (selectForm) => {
+    
+    selectForm.appendChild(statusMessage);
+    statusMessage.textContent = loadMessage;
+    
+    const formData = new FormData(selectForm);
+    let body = {};
+    for(let val of formData.entries()){
+      body[val[0]] = val[1];
+    }
+    postData(body)
+    .then ((response) => {
+      if (response.status !== 200){
+        input.forEach((item) => {item.value = '';});
+        throw new Error ('status network not 200');
+      }
+      input.forEach((item) => {item.value = '';});
+      statusMessage.textContent = successMessage;
+    })
+    .catch ((error) => {
+      statusMessage.textContent = errorMessage;
+      console.error(error);
+    });
+  };
+  
+  /*подключение к mainForm*/
+  mainForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (mainFormPhone.classList.contains('error')){
+      return false;
+    } else
+      post(mainForm);
+  });
+  
+  /*подключение к captureForm*/
+  captureForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (captureFormName.classList.contains('error') || captureFormPhone.classList.contains('error')){
+      return false;
+    } else
+      post(captureForm);
+  });
+  
+  const postData = (body) => {
+    return fetch('./server.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+  };
+};
+sendForm();
