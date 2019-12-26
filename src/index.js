@@ -1,5 +1,13 @@
 'use strict';
 
+import '@babel/polyfill';
+import 'nodelist-foreach-polyfill';
+import 'formdata-polyfill';
+import elementClosest from 'element-closest';
+elementClosest(window);
+import 'fetch-polyfill';
+import 'es6-promise';
+
 import getPopupCall from './modules/popup-call';
 import getPopupDiscount from './modules/popup-discount';
 import getPopupCheck from './modules/popup-check';
