@@ -1,4 +1,3 @@
-
 const sendForm = () => {
   
   const errorMessage = "Ошибка отправки формы",
@@ -16,14 +15,12 @@ const sendForm = () => {
     captureForm4 = document.getElementById('capture-form4'),
     captureFormName4 = document.getElementById('name_12'),
     captureFormPhone4 = document.getElementById('phone_12'),
-    directorForm = document.querySelector('.director-form'),
-    directorBtn = document.querySelector('.director-btn'),
     question = document.getElementById('question'),
     input = document.querySelectorAll('input');
   
   const statusMessage = document.createElement('div');
   statusMessage.style.cssText = `font-size: 2rem; color: #85be32;`;
-  
+
   const post = (selectForm) => {
     
     selectForm.appendChild(statusMessage);
@@ -34,6 +31,7 @@ const sendForm = () => {
     for(let val of formData.entries()){
       body[val[0]] = val[1];
     }
+    
     postData(body)
     .then ((response) => {
       if (response.status !== 200){
@@ -48,6 +46,9 @@ const sendForm = () => {
     })
     .catch ((error) => {
       statusMessage.textContent = errorMessage;
+      setTimeout(() => {
+        statusMessage.textContent = '';
+      }, 3000);
       console.error(error);
     });
   };
@@ -86,12 +87,6 @@ const sendForm = () => {
       return false;
     } else
       post(captureForm4);
-  });
-  
-  /* подключение к directorForm */
-  directorBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-    post(directorForm);
   });
   
   const postData = (body) => {

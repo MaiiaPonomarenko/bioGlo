@@ -1,5 +1,6 @@
 
 const popup = (btn, popupWindow) => {
+  
   btn.forEach((elem) => {
     elem.addEventListener('click', () => {
       popupWindow.style.display = 'block';

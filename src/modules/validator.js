@@ -188,12 +188,30 @@
         ]
       }
     });
+    const captureForm5 = new Validator({
+      selector: '#capture-form5',
+      pattern: {
+        phone: /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/,
+        name: /^[А-ЯЁа-яё\s]*$/
+      },
+      method: {
+        'phone_13': [
+          ['notEmpty'],
+          ['pattern', 'phone']
+        ],
+        'name_13': [
+          ['notEmpty'],
+          ['pattern', 'name']
+        ]
+      }
+    });
   
     mainForm.init();
     captureForm1.init();
     captureForm2.init();
     captureForm3.init();
     captureForm4.init();
+    captureForm5.init();
   };
 
 

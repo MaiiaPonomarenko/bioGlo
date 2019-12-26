@@ -11,6 +11,7 @@ import 'es6-promise';
 import getPopupCall from './modules/popup-call';
 import getPopupDiscount from './modules/popup-discount';
 import getPopupCheck from './modules/popup-check';
+import getPopupDirector from './modules/popup-director';
 import accordion from './modules/accordion';
 import more from './modules/more';
 import calcAccordion from './modules/calc-accordion';
@@ -24,6 +25,8 @@ valid();
 getPopupCall();
 getPopupDiscount();
 getPopupCheck();
+getPopupDiscount();
+getPopupDirector();
 
 /***** accordion *****/
 accordion();

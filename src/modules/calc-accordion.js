@@ -118,7 +118,6 @@ const calcAccordion = () => {
         objCalc['Количество колец второго колодца'] = '1 штука';
         secondWell.style.visibility = 'visible';
       }
-      
       result();
     });
     
@@ -146,7 +145,6 @@ const calcAccordion = () => {
         numOfRingsOne = 0.5;
         objCalc['Количество колец первого колодца'] = '3 штуки';
       }
-      
       result();
     });
     
@@ -159,7 +157,6 @@ const calcAccordion = () => {
         diamTwo = 0;
         objCalc['Диаметр второго колодца'] = '1.4 метра';
       }
-      
       result();
     });
     
@@ -203,7 +200,6 @@ const calcAccordion = () => {
     
     popup(sendSale, popupDiscount);
     
-    /*********************   *********************/
     const errorMessage = "Ошибка отправки формы",
       loadMessage = 'Загрузка...',
       successMessage = 'Спасибо, мы скоро с Вами свяжемся!';
