@@ -303,6 +303,63 @@ const calcAccordion = () => {
     };
     
     popup(sendSale, popupDiscount);
+   
+    /*********************   *********************/
+    const errorMessage = "Ошибка отправки формы",
+      loadMessage = 'Загрузка...',
+      successMessage = 'Спасибо, мы скоро с Вами свяжемся!';
+  
+    const
+      captureForm3 = document.getElementById('capture-form3'),
+      captureFormName3 = document.getElementById('name_11'),
+      captureFormPhone3 = document.getElementById('phone_11'),
+      input = document.querySelectorAll('input');
+  
+    const statusMessage = document.createElement('div');
+    statusMessage.style.cssText = `font-size: 2rem; color: #85be32;`;
+    
+    captureForm3.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (captureFormName3.classList.contains('error') || captureFormPhone3.classList.contains('error')){
+        return false;
+      } else{
+        captureForm3.appendChild(statusMessage);
+        statusMessage.textContent = loadMessage;
+  
+        const formData = new FormData(captureForm3);
+        let address = {};
+        for(let val of formData.entries()){
+          address[val[0]] = val[1];
+        }
+        let body = Object.assign(address, objCalc);
+        
+        postData(body)
+        .then ((response) => {
+          if (response.status !== 200){
+            input.forEach((item) => {item.value = '';});
+            throw new Error ('status network not 200');
+          }
+          input.forEach((item) => {item.value = '';});
+          statusMessage.textContent = successMessage;
+        })
+        .catch ((error) => {
+          statusMessage.textContent = errorMessage;
+          console.error(error);
+        });
+      }
+      
+    });
+  
+    const postData = (body) => {
+      return fetch('./server.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
+    };
+    /*********************   *********************/
   };
   calc();
   
@@ -324,9 +381,6 @@ const sendForm = () => {
         captureForm2 = document.getElementById('capture-form2'),
         captureFormName2 = document.getElementById('name_2'),
         captureFormPhone2 = document.getElementById('phone_2'),
-        captureForm3 = document.getElementById('capture-form3'),
-        captureFormName3 = document.getElementById('name_11'),
-        captureFormPhone3 = document.getElementById('phone_11'),
         captureForm4 = document.getElementById('capture-form4'),
         captureFormName4 = document.getElementById('name_12'),
         captureFormPhone4 = document.getElementById('phone_12'),
@@ -387,16 +441,7 @@ const sendForm = () => {
       post(captureForm2);
   });
   
-  /* подключение к captureForm3 */
-  captureForm3.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (captureFormName3.classList.contains('error') || captureFormPhone3.classList.contains('error')){
-      return false;
-    } else
-      post(captureForm3);
-  });
-  
-  /* подключение к captureForm3 */
+  /* подключение к captureForm4 */
   captureForm4.addEventListener('submit', (event) => {
     event.preventDefault();
     if (captureFormName4.classList.contains('error') || captureFormPhone4.classList.contains('error')){
