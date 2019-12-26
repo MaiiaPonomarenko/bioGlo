@@ -113,15 +113,35 @@ const calcAccordion = () => {
     accordion.addEventListener('click', () => {
       if (event.target.matches('.headingOne')){
         collapseOne.classList.toggle('in');
+        if (collapseTwo.classList.contains('in') || collapseThree.classList.contains('in') || collapseFour.classList.contains('in')){
+          collapseTwo.classList.remove('in');
+          collapseThree.classList.remove('in');
+          collapseFour.classList.remove('in');
+        }
       }
       else if (event.target.matches('.headingTwo')){
         collapseTwo.classList.toggle('in');
+        if (collapseOne.classList.contains('in') || collapseThree.classList.contains('in') || collapseFour.classList.contains('in')){
+          collapseOne.classList.remove('in');
+          collapseThree.classList.remove('in');
+          collapseFour.classList.remove('in');
+        }
       }
       else if (event.target.matches('.headingThree')){
         collapseThree.classList.toggle('in');
+        if (collapseTwo.classList.contains('in') || collapseOne.classList.contains('in') || collapseFour.classList.contains('in')){
+          collapseTwo.classList.remove('in');
+          collapseOne.classList.remove('in');
+          collapseFour.classList.remove('in');
+        }
       }
       else if (event.target.matches('.headingFour')){
         collapseFour.classList.toggle('in');
+        if (collapseTwo.classList.contains('in') || collapseThree.classList.contains('in') || collapseOne.classList.contains('in')){
+          collapseTwo.classList.remove('in');
+          collapseThree.classList.remove('in');
+          collapseOne.classList.remove('in');
+        }
       }
     });
   
@@ -358,6 +378,15 @@ const sendForm = () => {
   });
   
   /* подключение к captureForm3 */
+  captureForm4.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (captureFormName4.classList.contains('error') || captureFormPhone4.classList.contains('error')){
+      return false;
+    } else
+      post(captureForm4);
+  });
+  
+  /* подключение к calc */
   captureForm4.addEventListener('submit', (event) => {
     event.preventDefault();
     if (captureFormName4.classList.contains('error') || captureFormPhone4.classList.contains('error')){
