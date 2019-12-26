@@ -195,7 +195,9 @@
     captureForm3.init();
     captureForm4.init();
   };
-valid();
+
+
+export default valid;
 
 
   

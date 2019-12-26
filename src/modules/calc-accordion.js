@@ -1,105 +1,5 @@
-'use strict';
+import popup from './popup';
 
-/***** popup *****/
-const popup = (btn, popupWindow) => {
-  btn.forEach((elem) => {
-    elem.addEventListener('click', () => {
-      popupWindow.style.display = 'block';
-    })
-  });
-  
-  popupWindow.addEventListener('click', (event) => {
-    let target = event.target;
-    if (target.classList.contains('popup-close'))
-      popupWindow.style.display = 'none';
-    else{
-      target = target.closest('.popup-content');
-      if (!target)
-        popupWindow.style.display = 'none';
-    }
-  });
-};
-
-/***** popup popup-call *****/
-const getPopupCall = () => {
-  const callBtn = document.querySelectorAll('.call-btn'),
-        popupCall = document.querySelector('.popup-call');
-  
-  popup(callBtn, popupCall);
-};
-getPopupCall();
-
-/***** popup popup-discount *****/
-const getPopupDiscount = () => {
-  const discountBtn = document.querySelectorAll('.discount-btn'),
-        popupDiscount = document.querySelector('.popup-discount');
-  
-  popup(discountBtn, popupDiscount);
-};
-getPopupDiscount();
-
-/***** popup popup-check *****/
-const getPopupCheck = () => {
-  const checkBtn = document.querySelectorAll('.check-btn'),
-        popupCheck = document.querySelector('.popup-check');
-  
-  popup(checkBtn, popupCheck);
-  
-};
-getPopupCheck();
-
-
-/***** accordion *****/
-const accordion = () => {
-  const collapseOnTwo = document.getElementById('collapseOne-two'),
-        collapseTwoTwo = document.getElementById('collapseTwo-two'),
-        collapseThreeTwo = document.getElementById('collapseThree-two'),
-        accordionTwo = document.getElementById('accordion-two');
-  
-  accordionTwo.addEventListener('click', () => {
-    if (event.target.classList.contains('collapseOne-two')){
-      collapseOnTwo.classList.toggle('in');
-      if (collapseTwoTwo.classList.contains('in') || collapseThreeTwo.classList.contains('in')){
-        collapseTwoTwo.classList.remove('in');
-        collapseThreeTwo.classList.remove('in');
-      }
-    }
-    else if (event.target.classList.contains('collapseTwo-two')){
-      collapseTwoTwo.classList.toggle('in');
-      if (collapseOnTwo.classList.contains('in') || collapseThreeTwo.classList.contains('in')){
-        collapseOnTwo.classList.remove('in');
-        collapseThreeTwo.classList.remove('in');
-      }
-    }
-    else if (event.target.classList.contains('collapseThree-two')){
-      collapseThreeTwo.classList.toggle('in');
-      if (collapseTwoTwo.classList.contains('in') || collapseOnTwo.classList.contains('in')){
-        collapseTwoTwo.classList.remove('in');
-        collapseOnTwo.classList.remove('in');
-      }
-    }
-  });
-};
-accordion();
-
-/***** more *****/
-const more = () => {
-  const addSentenceBtn = document.querySelector('.add-sentence-btn'),
-        itemSentence = document.querySelectorAll('.item-sentence');
-  
-  addSentenceBtn.addEventListener('click', () => {
-    itemSentence.forEach((item) => {
-      if (item.classList.contains('hidden') || item.classList.contains('visible-sm-block')){
-        item.classList.remove('visible-sm-block');
-        item.classList.remove('hidden');
-        addSentenceBtn.style.display = 'none';
-      }
-    })
-  });
-};
-more();
-
-/***** calc-accordion *****/
 const calcAccordion = () => {
   
   const accordion = () => {
@@ -109,7 +9,7 @@ const calcAccordion = () => {
       collapseThree = document.getElementById('collapseThree'),
       collapseFour = document.getElementById('collapseFour'),
       accordion = document.getElementById('accordion');
-  
+    
     accordion.addEventListener('click', () => {
       if (event.target.matches('.headingOne')){
         collapseOne.classList.toggle('in');
@@ -144,7 +44,7 @@ const calcAccordion = () => {
         }
       }
     });
-  
+    
     for (let i = 0; i < constructBtn.length; i++){
       constructBtn[i].addEventListener('click', () => {
         if (i === 0){
@@ -179,28 +79,28 @@ const calcAccordion = () => {
   
   const calc = () => {
     const calcResultInput = document.getElementById('calc-result'),
-          myonoffswitch = document.getElementById('myonoffswitch'),
-          myonoffswitchTwo = document.getElementById('myonoffswitch-two'),
-          diameterOne = document.querySelector('.diameter-one'),
-          diameterTwo = document.querySelector('.diameter-two'),
-          numberOfRingsOne = document.querySelector('.number-of-rings-one'),
-          numberOfRingsTwo = document.querySelector('.number-of-rings-two'),
-          secondWell = document.querySelector('.second-well'),
-          sendSale = document.querySelectorAll('.send-sale'),
-          popupDiscount = document.querySelector('.popup-discount');
-
+      myonoffswitch = document.getElementById('myonoffswitch'),
+      myonoffswitchTwo = document.getElementById('myonoffswitch-two'),
+      diameterOne = document.querySelector('.diameter-one'),
+      diameterTwo = document.querySelector('.diameter-two'),
+      numberOfRingsOne = document.querySelector('.number-of-rings-one'),
+      numberOfRingsTwo = document.querySelector('.number-of-rings-two'),
+      secondWell = document.querySelector('.second-well'),
+      sendSale = document.querySelectorAll('.send-sale'),
+      popupDiscount = document.querySelector('.popup-discount');
+    
     let septicTypePrice = 10000,
-        diamOne = 0,
-        numOfRingsOne = 0,
-        diamTwo = 0,
-        numOfRingsTwo = 0,
-        wellBottom = 0;
+      diamOne = 0,
+      numOfRingsOne = 0,
+      diamTwo = 0,
+      numOfRingsTwo = 0,
+      wellBottom = 0;
     
     const objCalc = {};
     objCalc['Диаметр первого колодца'] = '1.4 метра';
     objCalc['Количество колец первого колодца'] = '1 штука';
     objCalc['Наличие днища'] = 'есть';
-      
+    
     secondWell.style.visibility = 'hidden';
     
     myonoffswitch.addEventListener('change', () => {
@@ -218,7 +118,7 @@ const calcAccordion = () => {
         objCalc['Количество колец второго колодца'] = '1 штука';
         secondWell.style.visibility = 'visible';
       }
-  
+      
       result();
     });
     
@@ -246,7 +146,7 @@ const calcAccordion = () => {
         numOfRingsOne = 0.5;
         objCalc['Количество колец первого колодца'] = '3 штуки';
       }
-  
+      
       result();
     });
     
@@ -259,7 +159,7 @@ const calcAccordion = () => {
         diamTwo = 0;
         objCalc['Диаметр второго колодца'] = '1.4 метра';
       }
-  
+      
       result();
     });
     
@@ -277,7 +177,7 @@ const calcAccordion = () => {
       }
       result();
     });
-  
+    
     myonoffswitchTwo.addEventListener('change', () => {
       if (!myonoffswitchTwo.checked){
         wellBottom = 0;
@@ -302,18 +202,18 @@ const calcAccordion = () => {
     };
     
     popup(sendSale, popupDiscount);
-   
+    
     /*********************   *********************/
     const errorMessage = "Ошибка отправки формы",
       loadMessage = 'Загрузка...',
       successMessage = 'Спасибо, мы скоро с Вами свяжемся!';
-  
+    
     const
       captureForm3 = document.getElementById('capture-form3'),
       captureFormName3 = document.getElementById('name_11'),
       captureFormPhone3 = document.getElementById('phone_11'),
       input = document.querySelectorAll('input');
-  
+    
     const statusMessage = document.createElement('div');
     statusMessage.style.cssText = `font-size: 2rem; color: #85be32;`;
     
@@ -324,7 +224,7 @@ const calcAccordion = () => {
       } else{
         captureForm3.appendChild(statusMessage);
         statusMessage.textContent = loadMessage;
-  
+        
         const formData = new FormData(captureForm3);
         let address = {};
         for(let val of formData.entries()){
@@ -338,11 +238,11 @@ const calcAccordion = () => {
             input.forEach((item) => {item.value = '';});
             throw new Error ('status network not 200');
           }
-            input.forEach((item) => {item.value = '';});
-            statusMessage.textContent = successMessage;
-            setTimeout(() => {
-              statusMessage.textContent = '';
-            }, 3000);
+          input.forEach((item) => {item.value = '';});
+          statusMessage.textContent = successMessage;
+          setTimeout(() => {
+            statusMessage.textContent = '';
+          }, 3000);
           
         })
         .catch ((error) => {
@@ -352,7 +252,7 @@ const calcAccordion = () => {
       }
       
     });
-  
+    
     const postData = (body) => {
       return fetch('./server.php', {
         method: 'POST',
@@ -368,112 +268,5 @@ const calcAccordion = () => {
   calc();
   
 };
-calcAccordion();
 
-/***** ajax *****/
-const sendForm = () => {
-  
-  const errorMessage = "Ошибка отправки формы",
-        loadMessage = 'Загрузка...',
-        successMessage = 'Спасибо, мы скоро с Вами свяжемся!';
-  
-  const mainForm = document.querySelector('.main-form'),
-        mainFormPhone = document.getElementById('phone_3'),
-        captureForm1 = document.getElementById('capture-form1'),
-        captureFormName1 = document.getElementById('name_1'),
-        captureFormPhone1 = document.getElementById('phone_1'),
-        captureForm2 = document.getElementById('capture-form2'),
-        captureFormName2 = document.getElementById('name_2'),
-        captureFormPhone2 = document.getElementById('phone_2'),
-        captureForm4 = document.getElementById('capture-form4'),
-        captureFormName4 = document.getElementById('name_12'),
-        captureFormPhone4 = document.getElementById('phone_12'),
-        directorForm = document.querySelector('.director-form'),
-        directorBtn = document.querySelector('.director-btn'),
-        question = document.getElementById('question'),
-        input = document.querySelectorAll('input');
-  
-  const statusMessage = document.createElement('div');
-  statusMessage.style.cssText = `font-size: 2rem; color: #85be32;`;
-  
-  const post = (selectForm) => {
-    
-    selectForm.appendChild(statusMessage);
-    statusMessage.textContent = loadMessage;
-    
-    const formData = new FormData(selectForm);
-    let body = {};
-    for(let val of formData.entries()){
-      body[val[0]] = val[1];
-    }
-    postData(body)
-    .then ((response) => {
-      if (response.status !== 200){
-        input.forEach((item) => {item.value = '';});
-        throw new Error ('status network not 200');
-      }
-      input.forEach((item) => {item.value = '';});
-      statusMessage.textContent = successMessage;
-      setTimeout(() => {
-        statusMessage.textContent = '';
-      }, 3000);
-    })
-    .catch ((error) => {
-      statusMessage.textContent = errorMessage;
-      console.error(error);
-    });
-  };
-  
-  /* подключение к mainForm */
-  mainForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (mainFormPhone.classList.contains('error')){
-      return false;
-    } else
-      post(mainForm);
-  });
-  
-  /* подключение к captureForm1 */
-  captureForm1.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (captureFormName1.classList.contains('error') || captureFormPhone1.classList.contains('error')){
-      return false;
-    } else
-      post(captureForm1);
-  });
-  
-  /* подключение к captureForm2 */
-  captureForm2.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (captureFormName2.classList.contains('error') || captureFormPhone2.classList.contains('error')){
-      return false;
-    } else
-      post(captureForm2);
-  });
-  
-  /* подключение к captureForm4 */
-  captureForm4.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (captureFormName4.classList.contains('error') || captureFormPhone4.classList.contains('error')){
-      return false;
-    } else
-      post(captureForm4);
-  });
-  
-  /* подключение к directorForm */
-  directorBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-    post(directorForm);
-  });
-  
-  const postData = (body) => {
-    return fetch('./server.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    });
-  };
-};
-sendForm();
+export default calcAccordion;
