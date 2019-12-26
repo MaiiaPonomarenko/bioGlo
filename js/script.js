@@ -147,12 +147,31 @@ const calcAccordion = () => {
   
     for (let i = 0; i < constructBtn.length; i++){
       constructBtn[i].addEventListener('click', () => {
-        if (i === 0)
+        if (i === 0){
           collapseTwo.classList.add('in');
-        else if (i === 1)
+          if (collapseOne.classList.contains('in') || collapseThree.classList.contains('in') || collapseFour.classList.contains('in')){
+            collapseOne.classList.remove('in');
+            collapseThree.classList.remove('in');
+            collapseFour.classList.remove('in');
+          }
+        }
+        else if (i === 1){
           collapseThree.classList.add('in');
-        else
+          if (collapseTwo.classList.contains('in') || collapseOne.classList.contains('in') || collapseFour.classList.contains('in')){
+            collapseTwo.classList.remove('in');
+            collapseOne.classList.remove('in');
+            collapseFour.classList.remove('in');
+          }
+        }
+        
+        else {
           collapseFour.classList.add('in');
+          if (collapseTwo.classList.contains('in') || collapseThree.classList.contains('in') || collapseOne.classList.contains('in')){
+            collapseTwo.classList.remove('in');
+            collapseThree.classList.remove('in');
+            collapseOne.classList.remove('in');
+          }
+        }
       });
     }
   };
