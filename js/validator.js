@@ -120,8 +120,25 @@
         ]
       }
     });
-    const captureForm = new Validator({
-      selector: '.capture-form',
+    const captureForm1 = new Validator({
+      selector: '#capture-form1',
+      pattern: {
+        phone: /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/,
+        name: /^[А-ЯЁа-яё\s]*$/
+      },
+      method: {
+        'phone_1': [
+          ['notEmpty'],
+          ['pattern', 'phone']
+        ],
+        'name_1': [
+          ['notEmpty'],
+          ['pattern', 'name']
+        ]
+      }
+    });
+    const captureForm2 = new Validator({
+      selector: '#capture-form2',
       pattern: {
         phone: /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/,
         name: /^[А-ЯЁа-яё\s]*$/
@@ -137,9 +154,46 @@
         ]
       }
     });
+    const captureForm3 = new Validator({
+      selector: '#capture-form3',
+      pattern: {
+        phone: /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/,
+        name: /^[А-ЯЁа-яё\s]*$/
+      },
+      method: {
+        'phone_11': [
+          ['notEmpty'],
+          ['pattern', 'phone']
+        ],
+        'name_11': [
+          ['notEmpty'],
+          ['pattern', 'name']
+        ]
+      }
+    });
+    const captureForm4 = new Validator({
+      selector: '#capture-form4',
+      pattern: {
+        phone: /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/,
+        name: /^[А-ЯЁа-яё\s]*$/
+      },
+      method: {
+        'phone_12': [
+          ['notEmpty'],
+          ['pattern', 'phone']
+        ],
+        'name_12': [
+          ['notEmpty'],
+          ['pattern', 'name']
+        ]
+      }
+    });
   
     mainForm.init();
-    captureForm.init();
+    captureForm1.init();
+    captureForm2.init();
+    captureForm3.init();
+    captureForm4.init();
   };
 valid();
 

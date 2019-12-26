@@ -59,12 +59,24 @@ const accordion = () => {
   accordionTwo.addEventListener('click', () => {
     if (event.target.classList.contains('collapseOne-two')){
       collapseOnTwo.classList.toggle('in');
+      if (collapseTwoTwo.classList.contains('in') || collapseThreeTwo.classList.contains('in')){
+        collapseTwoTwo.classList.remove('in');
+        collapseThreeTwo.classList.remove('in');
+      }
     }
     else if (event.target.classList.contains('collapseTwo-two')){
       collapseTwoTwo.classList.toggle('in');
+      if (collapseOnTwo.classList.contains('in') || collapseThreeTwo.classList.contains('in')){
+        collapseOnTwo.classList.remove('in');
+        collapseThreeTwo.classList.remove('in');
+      }
     }
     else if (event.target.classList.contains('collapseThree-two')){
       collapseThreeTwo.classList.toggle('in');
+      if (collapseTwoTwo.classList.contains('in') || collapseOnTwo.classList.contains('in')){
+        collapseTwoTwo.classList.remove('in');
+        collapseOnTwo.classList.remove('in');
+      }
     }
   });
 };
@@ -267,20 +279,19 @@ const sendForm = () => {
   
   const mainForm = document.querySelector('.main-form'),
         mainFormPhone = document.getElementById('phone_3'),
-        captureForm = document.querySelector('.capture-form'),
-        captureFormName = document.getElementById('name_2'),
-        captureFormPhone = document.getElementById('phone_2'),
-    
-    form2 = document.getElementById('form2'),
-    form3 = document.getElementById('form3'),
-    input = document.querySelectorAll('input'),
-    name1 = document.getElementById('form1-name'),
-    phone1 = document.getElementById('form1-phone'),
-    name2 = document.getElementById('form2-name'),
-    phone2 = document.getElementById('form2-phone'),
-    message = document.getElementById('form2-message'),
-    name3 = document.getElementById('form3-name'),
-    phone3 = document.getElementById('form3-phone');
+        captureForm1 = document.getElementById('capture-form1'),
+        captureFormName1 = document.getElementById('name_1'),
+        captureFormPhone1 = document.getElementById('phone_1'),
+        captureForm2 = document.getElementById('capture-form2'),
+        captureFormName2 = document.getElementById('name_2'),
+        captureFormPhone2 = document.getElementById('phone_2'),
+        captureForm3 = document.getElementById('capture-form3'),
+        captureFormName3 = document.getElementById('name_11'),
+        captureFormPhone3 = document.getElementById('phone_11'),
+        captureForm4 = document.getElementById('capture-form4'),
+        captureFormName4 = document.getElementById('name_12'),
+        captureFormPhone4 = document.getElementById('phone_12'),
+        input = document.querySelectorAll('input');
   
   const statusMessage = document.createElement('div');
   statusMessage.style.cssText = `font-size: 2rem; color: #85be32;`;
@@ -310,7 +321,7 @@ const sendForm = () => {
     });
   };
   
-  /*подключение к mainForm*/
+  /* подключение к mainForm */
   mainForm.addEventListener('submit', (event) => {
     event.preventDefault();
     if (mainFormPhone.classList.contains('error')){
@@ -319,13 +330,40 @@ const sendForm = () => {
       post(mainForm);
   });
   
-  /*подключение к captureForm*/
-  captureForm.addEventListener('submit', (event) => {
+  /* подключение к captureForm1 */
+  captureForm1.addEventListener('submit', (event) => {
     event.preventDefault();
-    if (captureFormName.classList.contains('error') || captureFormPhone.classList.contains('error')){
+    if (captureFormName1.classList.contains('error') || captureFormPhone1.classList.contains('error')){
       return false;
     } else
-      post(captureForm);
+      post(captureForm1);
+  });
+  
+  /* подключение к captureForm2 */
+  captureForm2.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (captureFormName2.classList.contains('error') || captureFormPhone2.classList.contains('error')){
+      return false;
+    } else
+      post(captureForm2);
+  });
+  
+  /* подключение к captureForm3 */
+  captureForm3.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (captureFormName3.classList.contains('error') || captureFormPhone3.classList.contains('error')){
+      return false;
+    } else
+      post(captureForm3);
+  });
+  
+  /* подключение к captureForm3 */
+  captureForm4.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (captureFormName4.classList.contains('error') || captureFormPhone4.classList.contains('error')){
+      return false;
+    } else
+      post(captureForm4);
   });
   
   const postData = (body) => {
